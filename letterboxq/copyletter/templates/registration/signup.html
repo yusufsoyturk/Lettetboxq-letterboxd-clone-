@@ -1,0 +1,15 @@
+{% extends 'copyletter/base.html' %}
+{% block title %}SIGN UP{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 400px; margin-top: 50px;">
+    <h2>Create New Account</h2>
+    <form method="POST">
+        {% csrf_token %}
+        
+        {{ form.as_p }} 
+
+        <button type="submit" class="action-btn create-account-btn" style="width: 100%; padding: 10px;">Register</button>
+    </form>
+</div>
+{% endblock %}

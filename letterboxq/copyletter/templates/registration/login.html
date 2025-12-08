@@ -1,0 +1,22 @@
+{% extends 'copyletter/base.html' %} 
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 400px; margin-top: 50px;">
+    <h2>Giriş Yap</h2>
+    
+    <form method="POST">
+        {% csrf_token %} {% if form.errors %}
+            <p style="color: red;">Kullanıcı adı veya şifre yanlış.</p>
+        {% endif %}
+
+        {{ form.as_p }} 
+
+        <button type="submit" class="action-btn sign-in-btn" style="width: 100%; padding: 10px;">SIGN IN</button>
+        
+        <p style="margin-top: 15px; font-size: 0.9rem;">
+            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+        </p>
+    </form>
+</div>
+{% endblock %}

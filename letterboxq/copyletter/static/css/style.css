@@ -1,0 +1,172 @@
+.bck-image {
+    background-image: url('../images/avatar.png'); /* Sadece burada tanımla */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh; /* Ekranın tamamını kaplaması için */
+    width: 100%;
+    
+    /* İçindeki .image-common'u yatay ve dikey olarak merkeze getirir */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* --- İçerik Kapsayıcısı: Metni ve Butonları Dikey Sütun Halinde Sıralar --- */
+.image-common {
+    /* **Tüm tekrarlanan ve çakışan Flexbox ayarları KALDIRILDI.** */
+    
+    /* Metin ve butonları dikey bir sütunda alt alta sıralar */
+    display: flex;
+    flex-direction: column; 
+    
+    /* Metin ve butonları yatayda ortalar */
+    align-items: center; 
+    
+    text-align: center;
+    
+    /* **BUĞULU CAM EFEKTİ SADECE İÇERİK KAPSAYICISINA UYGULANIR** */
+    background-color: rgba(255, 255, 255, 0.1); /* Yarı saydam arka plan */
+    backdrop-filter: blur(1px); /* Buğu efektini etkinleştirdik */
+    
+    padding: 30px; /* İç boşluğu artırdık */
+    border-radius: 10px;
+    width: auto; /* İçeriğe göre genişlemesini sağlar */
+    height: auto;
+}
+
+/* --- Metin Kapsayıcısı: Akışa Dahil Edildi (Absolute Konumlandırma Kaldırıldı) --- */
+.image-text {
+    /* position: absolute; tamamen KALDIRILDI! */
+    /* Metin artık .image-common'ın Flexbox akışına dahil. */
+    
+    /* Arka plan buğusu image-common'a taşındığı için bu stiller gereksiz: */
+    /* background-color: rgba(255, 255, 255, 0.1); */ 
+    
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0; /* İç dolguyu sıfırladık, çünkü dış kapsayıcıda dolgu var */
+    margin-bottom: 20px; /* Butonlardan dikey boşluk */
+    text-align: center;
+}
+
+/* --- Buton Kapsayıcısı --- */
+.button-container {
+    display: flex; /* Butonları yan yana getirir */
+    gap: 15px; 
+    margin-top: 0; /* Boşluk zaten .image-text'te verildi */
+}
+
+.action-btn {
+    /* Genel buton stilleri */
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* İstenen Stil: İki butonun da yeşil renkte olması */
+.sign-in-btn,
+.create-account-btn {
+    background-color: var(--logo-green); /* İstenen yeşil renk */
+    color: var(--bg-dark); /* Koyu metin rengi (arka plan koyu olduğu için) */
+}
+
+.action-btn:hover {
+    /* Hover efekti */
+    opacity: 0.9;
+}
+
+/* --- GENEL AYARLAR --- */
+:root {
+    --bg-dark: #14181c;       /* Ana arka plan */
+    --nav-bg: #2c3440;        /* Navbar arka planı (bazen header için) */
+        --text-main: #9ab;        /* Sönük metin rengi */
+        --text-hover: #ffffff;    /* Hover metin rengi */
+        --logo-green: #00e054;
+        --logo-orange: #ff8000;
+        --logo-blue: #40bcf4;
+    }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: #fff;
+    font-family: 'Roboto', sans-serif; /* Letterboxd Graphik kullanır ama Roboto yakındır */
+}
+
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+ul { list-style: none; margin: 0; padding: 0; }
+/* --- NAVBAR --- */
+.navbar {
+    background-color: #14181c; /* Header şeffaf veya koyu olabilir */
+    padding: 15px 0;
+    border-bottom: 1px solid #2c3440;
+}
+
+.container {
+    max-width: 950px; /* Letterboxd içeriği çok geniş tutmaz */
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* --- CSS LOGO TASARIMI --- */
+.brand {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+.brand-circles {
+    display: flex;
+    gap: 4px;
+    margin-right: 10px;
+}
+.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.c-green { background-color: var(--logo-green); }
+.c-orange { background-color: var(--logo-orange); }
+.c-blue { background-color: var(--logo-blue); }
+/* --- NAV LİNKLERİ --- */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.nav-links li a {
+    color: var(--text-main);}
+
+.nav-links li a:hover {
+    color: var(--text-hover);}
+
+/* --- BUTONLAR --- */
+.btn-create {
+    color: var(--logo-green) !important;} /* Yeşil vurgu */
+
+/* --- İÇERİK ALANI --- */
+.content-wrapper {
+    padding: 40px 0;
+    min-height: 80vh;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .container { flex-direction: column; gap: 15px; }
+    .nav-links { gap: 15px; font-size: 0.75rem; }
+}
