@@ -1,4 +1,3 @@
-# Make sure to install the requests library for API request: pip install requests
 import requests
 from django.core.management.base import BaseCommand
 from django.conf import settings
@@ -29,11 +28,11 @@ class Command(BaseCommand):
                 Movies.objects.update_or_create(
                     tmdb_id=tmdb_id,
                     defaults={
-                        'baslik': title,
-                        'ozet': film_data.get('overview'),
+                        'movie_name': title,
+                        'summary': film_data.get('overview'),
                         # Safely extract and convert release year to integer
-                        'cikartilis_yili': int(film_data.get('release_date', '0000')[:4]) if film_data.get('release_date') else None,
-                        'oy_ortalamasi': film_data.get('vote_average'),
+                        'released_year': int(film_data.get('release_date', '0000')[:4]) if film_data.get('release_date') else None,
+                        'rate_mean': film_data.get('vote_average'),
                         'poster_url': f"https://image.tmdb.org/t/p/w500{film_data.get('poster_path')}" if film_data.get('poster_path') else None,
                     }
                 )

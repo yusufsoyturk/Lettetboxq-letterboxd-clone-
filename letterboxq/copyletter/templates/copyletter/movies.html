@@ -1,0 +1,39 @@
+{% extends 'copyletter/base.html' %} 
+{% load static %}
+
+{% block content %}
+<div class="container movie-list-wrapper">
+    <h1>Popular Movies</h1>
+    
+    {% for film in movies %}
+        <div class="movie-card-horizontal">
+            
+            <div class="card-section poster-section">
+                {% if film.poster_url %}
+                    <img src="{{ film.poster_url }}" alt="{{ film.title }} Posteri" class="poster-img">
+                {% else %}
+                    <img src="{% static 'images/placeholder.png' %}" alt="Poster Yok" class="poster-img">
+                {% endif %}
+            </div>
+
+            <div class="card-section info-section">
+                <h3 class="movie-title">{{ film.movie_name }} ({{ film.released_year }})</h3>
+                
+                <p class="movie-summary">
+                    {{ film.summary|truncatechars:200 }} 
+                </p>
+                </div>
+
+            <div class="card-section stats-section">
+                <div class="stat-item rating-score">
+                    ⭐️ {{ film.rate_mean|floatformat:1 }}
+                </div>
+                
+                <div class="stat-item ">
+                    Yıl: {{ film.released_year }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

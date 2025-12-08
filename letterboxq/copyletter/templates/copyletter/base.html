@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}DjangoBoxd{% endblock %}</title>
+    <title>{% block title %}Letterboxq{% endblock %}</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Graphik+Web:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -22,7 +22,7 @@
                     <span class="circle c-orange"></span>
                     <span class="circle c-blue"></span>
                 </div>
-                DjangoBoxd
+                Letterboxq
             </a>
 
             <nav>
@@ -30,7 +30,7 @@
                     {% if user.is_authenticated %}
                         <li><a href="#">Home</a></li>
                         <li><a href="#">PROFILE</a></li>
-                        <li><a href="#">MOVIES</a></li>
+                        <li><a href="{% url 'movie_list' %}">MOVIES</a></li>
                         <li><a href="#">LISTS</a></li>
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
@@ -57,7 +57,7 @@
     </main>
 
     <footer style="text-align: center; padding: 20px; color: #556677; font-size: 0.8rem;">
-        &copy; 2024 DjangoBoxd Deneme Projesi
+        &copy; 2025 Letterboxd Clone Deneme Projesi
     </footer>
 
 </body>
