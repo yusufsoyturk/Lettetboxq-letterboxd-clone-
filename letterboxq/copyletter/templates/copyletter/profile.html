@@ -1,0 +1,58 @@
+{% extends 'copyletter/base.html' %} 
+{% load static %}
+
+{% block content %}
+<div class="container movie-list-wrapper">
+    <h1>{{ request.user.username }}'s Watched Films ({{ reviews.count }})</h1>
+    
+    {% for entry in reviews %}
+        <div class="movie-card-horizontal">
+            
+            <div class="card-section poster-section">
+                {% comment %} Use entry.movies.poster_url if available in your Movies model {% endcomment %}
+                {% if entry.movies.poster_url %}
+                    <img src="{{ entry.movies.poster_url }}" alt="{{ entry.movies.title }} Poster" class="poster-img">
+                {% else %}
+                    <img src="{% static 'images/placeholder.png' %}" alt="No Poster" class="poster-img">
+                {% endif %}
+            </div>
+
+            <div class="card-section info-section">
+                <h3 class="movie-title">
+                    {{ entry.movies.movie_name|default:entry.movies.movie_name }} ({{ entry.movies.released_year|default:'N/A' }})
+                </h3>
+                
+                <p class="movie-summary user-review-text">
+                    "{{ entry.my_review|default:'No user review available.' }}" 
+                </p>
+                
+            </div>
+
+            <div class="card-section stats-section">
+                
+                <div class="stat-item rating-score" style="color: #ffc107;">
+                    ⭐️ {{ entry.rate|default:"-" }}/10
+                </div>
+                
+                <div class="stat-item">
+                    <a href="{% url 'delete_review' entry.id %}" 
+                       class="action-btn delete-btn" 
+                       style="background-color: #dc3545; padding: 5px 15px; font-size: 0.8rem;"
+                       onclick="return confirm('Are you sure you want to delete this entry?');">
+                       DELETE
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+    <p class="text-white">You haven't logged any films yet.</p>
+    {% endfor %}
+</div>
+
+<style>
+    .user-review-text {
+        color: #ddd; 
+        font-style: italic;
+    }
+</style>
+{% endblock %}

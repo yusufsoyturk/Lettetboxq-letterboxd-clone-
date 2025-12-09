@@ -20,12 +20,14 @@ class WatchedMovies(models.Model):
     movies = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='watcher')
     watching_date = models.DateField(auto_now_add=True)
     rate = models.IntegerField(blank=True, null=True)
+    my_review = models.TextField(null=True)
 
     class Meta:
         unique_together = ('username', 'movies')
     
     def __str__(self):
         return f"{self.username} watched {self.movies.movie_name}"
+
     
 
 

@@ -28,16 +28,16 @@
             <nav>
                 <ul class="nav-links">
                     {% if user.is_authenticated %}
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">PROFILE</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'profile' %}">PROFILE</a></li>
                         <li><a href="{% url 'movie_list' %}">MOVIES</a></li>
-                        <li><a href="#">LISTS</a></li>
+                        <li><a href="{% url 'reviews' %}">REVIEWS</a></li>
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}">SIGN IN</a></li>
                         <li><a href="{% url 'signup' %}" class="btn-create">Create Account</a></li>
-                        <li><a href="#">MOVIES</a></li>
-                        <li><a href="#">LISTS</a></li>
+                        <li><a href="{% url 'movie_list' %}">MOVIES</a></li>
+                        <li><a href="{% url 'reviews' %}">REVIEWS</a></li>
                     {% endif %}
                 </ul>
             </nav>
@@ -57,7 +57,7 @@
     </main>
 
     <footer style="text-align: center; padding: 20px; color: #556677; font-size: 0.8rem;">
-        &copy; 2025 Letterboxd Clone Deneme Projesi
+        &copy; 2025 Letterboxd Clone Trial
     </footer>
 
 </body>

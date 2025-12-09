@@ -1,11 +1,8 @@
-/* =========================================
-   1. DEĞİŞKENLER VE GENEL AYARLAR
-   ========================================= */
 :root {
-    --bg-dark: #14181c;       /* Ana arka plan */
-    --nav-bg: #2c3440;        /* Navbar ve Kart arka planı */
-    --text-main: #9ab;        /* Sönük metin */
-    --text-hover: #ffffff;    /* Parlak metin */
+    --bg-dark: #14181c;
+    --nav-bg: #2c3440;
+    --text-main: #9ab;
+    --text-hover: #ffffff;
     --logo-green: #00e054;
     --logo-orange: #ff8000;
     --logo-blue: #40bcf4;
@@ -22,29 +19,22 @@ body {
 a { text-decoration: none; color: inherit; transition: 0.2s; }
 ul { list-style: none; margin: 0; padding: 0; }
 
-/* =========================================
-   2. NAVBAR VE CONTAINER YAPISI
-   ========================================= */
 .navbar {
     background-color: #14181c;
     padding: 15px 0;
     border-bottom: 1px solid #2c3440;
 }
 
-/* Genel Container: İçeriği ortalar ve genişliği sınırlar */
 .container {
     max-width: 950px;
     margin: 0 auto;
     padding: 0 20px;
-    
-    /* DİKKAT: Bu flex ayarı sadece Navbar için kullanışlıdır.
-       Movie list için bunu aşağıda "movie-list-wrapper" ile ezeceğiz. */
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Logo Tasarımı */
 .brand {
     display: flex;
     align-items: center;
@@ -59,7 +49,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 .c-orange { background-color: var(--logo-orange); }
 .c-blue { background-color: var(--logo-blue); }
 
-/* Nav Linkleri */
 .nav-links {
     display: flex;
     gap: 20px;
@@ -71,9 +60,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 .nav-links li a { color: var(--text-main); }
 .nav-links li a:hover { color: var(--text-hover); }
 
-/* =========================================
-   3. LANDING PAGE (Giriş Ekranı)
-   ========================================= */
 .bck-image {
     background-image: url('../images/avatar.png');
     background-repeat: no-repeat;
@@ -128,34 +114,23 @@ ul { list-style: none; margin: 0; padding: 0; }
 .btn-create { color: var(--logo-green) !important; }
 .action-btn:hover { opacity: 0.9; }
 
-/* =========================================
-   4. FİLM LİSTESİ (SORUNUN ÇÖZÜLDÜĞÜ YER)
-   ========================================= */
-
-/* Ana Liste Sarmalayıcısı */
 .movie-list-wrapper {
-    padding: 20px 0; /* Sağdan soldan padding'i container hallediyor */
+    padding: 20px 0;
     
-    /* ÇÖZÜM: .container'dan gelen 'flex-direction: row' özelliğini eziyoruz. */
     display: flex !important; 
-    flex-direction: column !important; /* KESİN ÇÖZÜM: Dikey sıralama */
-    gap: 20px; /* Kartlar arası boşluk */
+    flex-direction: column !important;
+    gap: 20px;
     
-    /* Genişlik ayarları */
     width: 100%; 
-    justify-content: flex-start; /* Üstten başla */
+    justify-content: flex-start;
 }
 
-/* =========================================
-   5. YATAY FİLM KARTI TASARIMI
-   ========================================= */
 .movie-card-horizontal {
-    /* Kartın kendi iç düzeni YATAY (Soldan Sağa: Poster -> Bilgi -> Puan) */
     display: flex;
     flex-direction: row; 
     
-    width: 100%; /* Satırın tamamını kapla */
-    height: 200px; /* Kartlar için sabit yükseklik (isteğe bağlı, daha düzenli durur) */
+    width: 100%;
+    height: 200px;
     
     background-color: var(--nav-bg);
     border-radius: 6px;
@@ -164,19 +139,17 @@ ul { list-style: none; margin: 0; padding: 0; }
     color: white;
 }
 
-/* -- BÖLÜM 1: Poster (%20) -- */
 .poster-section {
     flex: 0 0 20%;
-    max-width: 20%; /* Taşmayı önlemek için */
+    max-width: 20%;
     overflow: hidden;
 }
 .poster-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Resmi kutuya doldur */
+    object-fit: cover;
 }
 
-/* -- BÖLÜM 2: Bilgi (%65) -- */
 .info-section {
     flex: 0 0 65%;
     max-width: 65%;
@@ -195,15 +168,12 @@ ul { list-style: none; margin: 0; padding: 0; }
     font-size: 0.95rem;
     color: #b0b0b0;
     line-height: 1.4;
-    
-    /* Çok uzun metinleri 3 satırda kesip ... koyma */
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* -- BÖLÜM 3: İstatistikler (%15) -- */
 .stats-section {
     flex: 0 0 15%;
     max-width: 15%;
@@ -214,7 +184,7 @@ ul { list-style: none; margin: 0; padding: 0; }
     align-items: center;
     gap: 10px;
     text-align: center;
-    background-color: rgba(0,0,0,0.2); /* Hafif koyuluk */
+    background-color: rgba(0,0,0,0.2);
 }
 .rating-score {
     color: var(--logo-orange);
@@ -227,20 +197,12 @@ ul { list-style: none; margin: 0; padding: 0; }
     font-weight: 500;
 }
 
-/* =========================================
-   6. RESPONSIVE (MOBİL UYUMLULUK)
-   ========================================= */
 @media (max-width: 768px) {
-    /* Container mobilde dikey olur */
     .container { flex-direction: column; gap: 15px; }
-    
-    /* Film kartı mobilde dikey olur */
     .movie-card-horizontal {
         flex-direction: column;
-        height: auto; /* Yüksekliği serbest bırak */
+        height: auto;
     }
-    
-    /* Bölümler mobilde tam genişlik alır */
     .poster-section, .info-section, .stats-section {
         flex: 1 1 auto;
         max-width: 100%;
@@ -248,10 +210,10 @@ ul { list-style: none; margin: 0; padding: 0; }
         border-right: none;
     }
     
-    .poster-section { height: 300px; } /* Mobilde poster yüksekliği */
+    .poster-section { height: 300px; }
     
     .stats-section {
-        flex-direction: row; /* Mobilde puan ve yıl yan yana */
+        flex-direction: row;
         justify-content: space-around;
         padding: 10px;
         border-top: 1px solid #444;

@@ -29,9 +29,11 @@
                     ⭐️ {{ film.rate_mean|floatformat:1 }}
                 </div>
                 
-                <div class="stat-item ">
-                    Yıl: {{ film.released_year }}
-                </div>
+            <div class="stat-item">
+                <a href="{% url 'add_watched_movie' film.id %}" class="action-btn sign-in-btn" style="padding: 5px 15px; font-size: 0.8rem;">
+                + LOG
+                </a>
+            </div>
             </div>
         </div>
     {% endfor %}

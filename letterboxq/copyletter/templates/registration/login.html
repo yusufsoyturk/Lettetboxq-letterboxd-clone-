@@ -7,7 +7,7 @@
     
     <form method="POST">
         {% csrf_token %} {% if form.errors %}
-            <p style="color: red;">Kullanıcı adı veya şifre yanlış.</p>
+            <p style="color: red;">Username or password wrong</p>
         {% endif %}
 
         {{ form.as_p }} 
